@@ -32,7 +32,33 @@ public class Ej1 {
         return result;
     }
 
+    public int d(int n){
+        int result = 1;
+        int i = 0;
+        while (i <= n){
+            result += (2*n-1);
+            i++;
+        }
+        return result;
+    }
+
+    public int e(int n){
+        int result = 1;
+        int i = 0;
+        while (i <= n){
+            result += (n*(n+1));
+            i++;
+        }
+        return result;
+    }
+
     public int f(int n){
-        return (((n*(n+1))/2)^2);
+        int result = 1;
+        int i = 0;
+        while (i <= n){
+            result += Math.pow(n, 3);
+            i++;
+        }
+        return result;
     }
 }
