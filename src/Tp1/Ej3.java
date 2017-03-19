@@ -17,4 +17,14 @@ public class Ej3 {
       return counter;
 
     }
+
+    public int zeroCounterRecursive(int n){
+        if(n == 0)
+            return 0;
+
+        if((n %10) == 0)
+            return 1 + zeroCounterRecursive(n / 10);
+        else
+            return zeroCounterRecursive(n / 10);
+    }
 }

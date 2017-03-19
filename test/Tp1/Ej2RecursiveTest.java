@@ -2,15 +2,15 @@ package Tp1;
 
 import org.junit.Test;
 
-import static Tp1.Ej2.mcd;
-import static Tp1.Ej2.powOf2;
-import static org.junit.Assert.*;
+import static Tp1.Ej2Recursive.mcd;
+import static Tp1.Ej2Recursive.powOf2;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Lautaro Paskevicius (lautaro.paskevicius@ing.austral.edu.ar)
  * on 14/03/2017.
  */
-public class Ej2Test {
+public class Ej2RecursiveTest {
     @Test
     public void factorialTest() throws Exception {
 
