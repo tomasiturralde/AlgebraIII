@@ -97,20 +97,20 @@ public class Ej6 {
         return factors;
     }
 
-   /* public ArrayList<Integer> recursivePrimeFactors(int n){
-        ArrayList<Integer> factors = new ArrayList<>();
+    public ArrayList<Integer> recursivePrimeFactors(int n){
 
-        return recursivePrimeFactors(n,2,factors);
+        return recursivePrimeFactors(n,1,new ArrayList<>());
     }
 
-    private ArrayList<Integer> recursivePrimeFactors(int n,int i,ArrayList<Integer> factors) {
-        if(n <= i) return factors;
-
-        while(n % i == 0){
+    private ArrayList<Integer> recursivePrimeFactors(int n, int i, ArrayList<Integer> factors) {
+        if(n < i) {
+            return factors;
+        } else if(n % i == 0 && isPrime(i)){
             factors.add(i);
-            n /= i;
+            return recursivePrimeFactors(n/i, i+i, factors);
+        } else {
+            return recursivePrimeFactors(n, i+1, factors);
         }
 
-        return recursivePrimeFactors(n,++i,factors);
-    }*/
+    }
 }
