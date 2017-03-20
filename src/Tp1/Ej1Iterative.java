@@ -3,7 +3,8 @@ package Tp1;
 /**
  * Created by Tomas on 13/3/2017.
  */
-public class Ej1 {
+public class Ej1Iterative {
+
     public int a(int n){
         int result = 0;
         for (int i = 1; i < n+1; i++){
@@ -34,29 +35,27 @@ public class Ej1 {
 
     public int d(int n){
         int result = 1;
+        for (int i = 0; i <= n; i++) {
+            result += (2*i-1);
+        }
+        return result;
+    }
+
+    public static int e(int n){
+        int result = 0;
         int i = 0;
         while (i <= n){
-            result += (2*n-1);
+            result += (i*(i+1));
             i++;
         }
         return result;
     }
 
-    public int e(int n){
-        int result = 1;
+    public static int f(int n){
+        int result = 0;
         int i = 0;
         while (i <= n){
-            result += (n*(n+1));
-            i++;
-        }
-        return result;
-    }
-
-    public int f(int n){
-        int result = 1;
-        int i = 0;
-        while (i <= n){
-            result += Math.pow(n, 3);
+            result += Math.pow(i, 3);
             i++;
         }
         return result;

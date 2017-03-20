@@ -3,16 +3,29 @@ package Tp1;
 /**
  * Created by Tomas on 12/3/2017.
  */
-public class Ej4<T extends Comparable<T>> {
-    public boolean capicua(T[] list){
+public class Ej4 {
+
+    public boolean palindrome(int[] list){
         int counter = 0;
         for (int i = 0, j = list.length-1; j >= i; i++, j--){
-            if (list[i].compareTo(list[j]) != 0)
+            if (list[i] != list[j])
                     counter++;
 
         }
-        if (counter == 0)
+        return counter == 0;
+    }
+
+    public boolean palindromeRecursive(int[] list, int start, int last){
+        if(list.length == 0 || list.length == 1)
             return true;
-        return false;
+
+        if(start >= last)
+            return true;
+
+        if (list[start] != list[last]){
+            return false;
+        }
+
+        return palindromeRecursive(list, start + 1, last - 1);
     }
 }
