@@ -1,8 +1,14 @@
 package Tp1;
 
 /**
- * Created by Tomas on 19/3/2017.
+ * Ej 2 - Iterative version
+ *
+ * Iterative implementation of Ej 2 subsections.
+ *
+ * @author Tomas Iturralde & Lautaro Paskevicius
  */
+
+
 public class Ej2Iterative {
 
     public static int factorial(int n){

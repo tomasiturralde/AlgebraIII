@@ -3,10 +3,23 @@ package Tp1;
 import java.util.ArrayList;
 
 /**
- * Created by Lautaro Paskevicius (lautaro.paskevicius@ing.austral.edu.ar)
- * on 19/03/2017.
+ * Ej 8 - Iterative & Recursive version
+ *
+ * Iterative & recursive implementation of Ej 6 subsections.
+ *
+ * @author Tomas Iturralde & Lautaro Paskevicius
  */
+
 public class Ej6 {
+
+    /**
+     * isPrime
+     *
+     * Evaluates if a number is a prime or not.
+     *
+     * @param n natural integer
+     * @return true/false if param n is a prime number.
+     */
 
     public boolean isPrime(Integer n){
 
@@ -35,6 +48,15 @@ public class Ej6 {
         return answer;
     }
 
+    /**
+     * recursiveIsPrime
+     *
+     * public caller for recurisve version of isPrime().
+     *
+     * @param n natural integer.
+     * @return true/false if param n is a prime number.
+     */
+
     public boolean recursiveIsPrime(int n) {
         boolean answer = true;
 
@@ -56,6 +78,17 @@ public class Ej6 {
         return answer;
     }
 
+    /**
+     * isPrime
+     *
+     * Recursive version of isPrime().
+     *
+     * @param n natural integer.
+     * @param floor where to start counting from.
+     * @param limit square root of param n. Prevents algorithm from testing multiples.
+     * @return true/false if param n is a prime number.
+     */
+
     private boolean recursiveIsPrime(int n, int floor, int limit){
         if (n % floor == 0 && n != floor){
             return false;
@@ -68,6 +101,15 @@ public class Ej6 {
         return recursiveIsPrime(n, floor, limit);
     }
 
+    /**
+     * firstBiggerPrime
+     *
+     * Calculates the closest prime number to the natural number passed.
+     *
+     * @param n integer to look for.
+     * @return the closest prime number to param n.
+     */
+
     public int firstBiggerPrime(int n){
 
         while (!isPrime(n)){
@@ -77,14 +119,41 @@ public class Ej6 {
         return n;
     }
 
+    /**
+     * recursiveBiggerPrime
+     *
+     * public caller for recursiveBiggerPrime().
+     *
+     * @param n integer to look for.
+     * @return the closest prime number to param n.
+     */
+
     public int recursiveBiggerPrime(int n){
         if(isPrime(n)) return n;
         return recursiveBiggerPrime(++n);
     }
 
+    /**
+     * numberOfPrimeFactors
+     *
+     * Calculates the prime factors of a number and counts how much there are.
+     *
+     * @param n integer to evaluate.
+     * @return number of prime factors param n has.
+     */
+
     public int numberOfPrimeFactors(int n){
         return primeFactors(n).size();
     }
+
+    /**
+     * primeFactors
+     *
+     * Decomposes param n into prime factors
+     *
+     * @param n integer to decompose.
+     * @return an array list containing the prime factors of n.
+     */
 
     public  ArrayList<Integer> primeFactors(int n) {
         ArrayList<Integer> factors = new ArrayList<>();
@@ -97,10 +166,30 @@ public class Ej6 {
         return factors;
     }
 
+    /**
+     * recursivePrimeFactors
+     *
+     * public caller for recursivePrimeFactors().
+     *
+     * @param n integer to decompose.
+     * @return an array list containing the prime factors of n.
+     */
+
     public ArrayList<Integer> recursivePrimeFactors(int n){
 
         return recursivePrimeFactors(n,1,new ArrayList<>());
     }
+
+    /**
+     * recursivePrimeFactors
+     *
+     * public caller for recursivePrimeFactors().
+     *
+     * @param n integer to decompose.
+     * @param i following integer to test as a prime factor.
+     * @param factors list of prime factors of param n.
+     * @return an array list containing the prime factors of n.
+     */
 
     private ArrayList<Integer> recursivePrimeFactors(int n, int i, ArrayList<Integer> factors) {
         if(n < i) {

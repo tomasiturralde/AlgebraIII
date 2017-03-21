@@ -1,9 +1,23 @@
 package Tp1;
 
 /**
- * Created by Tomas on 12/3/2017.
+ * Ej 3 - Iterative & Recursive version
+ *
+ * Iterative & recursive implementation of Ej 3 task.
+ *
+ * @author Tomas Iturralde & Lautaro Paskevicius
  */
+
 public class Ej3 {
+
+    /**
+     * zeroCounter
+     *
+     * Checks how many zeros does an integer have.
+     *
+     * @param n A natural integer
+     * @return How many zeros are within n parameter.
+     */
 
     public int zeroCounter(int n){
       int counter = 0;
@@ -17,6 +31,15 @@ public class Ej3 {
       return counter;
 
     }
+
+    /**
+     * zeroCounterRecursive
+     *
+     * Recurisve version of zeroCounter.
+     *
+     * @param n A natural integer
+     * @return How many zeros are within n parameter.
+     */
 
     public int zeroCounterRecursive(int n){
         if(n == 0)

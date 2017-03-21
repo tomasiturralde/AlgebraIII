@@ -1,8 +1,13 @@
 package Tp1;
 
 /**
- * Created by Tomas on 13/3/2017.
+ * Ej 1 - Iterative version
+ *
+ * Each subsection is named as a method. Method (a) corresponds to Ej 1.a subsection, method (b) to Ej 1.b, an so on.
+ *
+ * @author Tomas Iturralde & Lautaro Paskevicius
  */
+
 public class Ej1Iterative {
 
     public int a(int n){
