@@ -5,9 +5,9 @@ package Tp6;
  * on 09/05/2017.
  */
 public class Matrix {
-    int rows;
-    int cols;
-    int[][] mat;
+    private int rows;
+    private int cols;
+    private int[][] mat;
 
     public Matrix(int rows, int cols) {
         this.rows = rows;
@@ -24,8 +24,32 @@ public class Matrix {
         mat[row][col] = val;
     }
 
+    public int getAt(int row, int col){
+        if(row < 0 || row >= rows) throw new RuntimeException("Row " + row + "does not  exist");
+        if(col < 0 || row >= cols) throw new RuntimeException("Col " + col + "does not  exist");
+
+        return mat[row][col];
+    }
+
     public boolean isSquared(){
         return rows == cols;
+    }
+
+    public void print(){
+        for(int i = 0; i < rows; i++){
+            for(int j = 0; j < cols; j++){
+                System.out.println(mat[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+    public int rowLength(){
+        return mat.length;
+    }
+
+    public int colLength(){
+        return mat[0].length;
     }
 
     public int getRows() {
