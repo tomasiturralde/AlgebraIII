@@ -9,7 +9,7 @@ public class Ej1 {
         if (matrix.isSquare()) {
             int result = 0;
             for (int i = 0; i < matrix.rowLength(); i++) {
-                result += matrix.getMat()[i][i];
+                result += matrix.getAt(i,i);
             }
             return result;
         }
@@ -21,7 +21,7 @@ public class Ej1 {
             int result = 0;
             for (int i = 0; i < matrix.rowLength(); i++){
                 for (int j = matrix.colLength(); j > 0; j--){
-                    result += matrix.getMat()[i][j];
+                    result += matrix.getAt(i,j);
                 }
             }
             return result;
@@ -32,8 +32,41 @@ public class Ej1 {
     public int[] ejC(Matrix matrix){
         if (matrix.isSquare()){
             int[] result = new int[matrix.rowLength()];
-
+            for (int i = 0; i < matrix.colLength(); i++){
+                int resultToAdd = 0;
+                for (int j = 0; j < matrix.rowLength(); j++){
+                    resultToAdd += matrix.getAt(j,i);
+                }
+                result[i] = resultToAdd;
+            }
+            return result;
         }
         throw new RuntimeException("Invalid matrix, must be square");
+    }
+
+    public int[] ejD(Matrix matrix, int[] vector){
+        if (matrix.rowLength() == vector.length){
+            int[] result = new int[matrix.rowLength()];
+            for (int i = 0; i < matrix.colLength(); i++){
+                for (int j = 0; j < matrix.rowLength(); j++){
+                    result[i] = matrix.getAt(j,i)*vector[j];
+                }
+            }
+            return result;
+        }
+        throw new RuntimeException("The amount of columns in the matrix must be equal to the vector's length");
+    }
+
+    public Matrix ejE(Matrix matrixA, Matrix matrixB){
+        if (matrixA.rowLength() == matrixB.rowLength() && matrixA.colLength() == matrixB.colLength()){
+            Matrix sum = new Matrix(matrixA.rowLength(), matrixB.colLength());
+            for (int i = 0; i < matrixA.rowLength(); i++){
+                for (int j = 0; j < matrixB.colLength(); j++){
+                    sum.insert(matrixA.getAt(i,j) + matrixB.getAt(i,j),i,j);
+                }
+            }
+            return sum;
+        }
+        throw new RuntimeException("Both dimensions must be equal");
     }
 }
