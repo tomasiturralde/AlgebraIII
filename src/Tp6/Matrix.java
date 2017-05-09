@@ -55,8 +55,10 @@ public class Matrix {
     public int getRows() {
         return rows;
     }
-
     public int getCols() {
         return cols;
+    }
+    public int[][] getMat() {
+        return mat;
     }
 }
