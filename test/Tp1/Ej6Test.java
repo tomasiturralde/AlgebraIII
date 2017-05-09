@@ -52,7 +52,7 @@ public class Ej6Test {
     @Test
     public void numberOfPrimeFactors() throws Exception {
         assertEquals(2,ej6.numberOfPrimeFactors(15));
-        assertEquals(3,ej6.numberOfPrimeFactors(8));
+        assertEquals(1,ej6.numberOfPrimeFactors(8));
     }
 
     @Test
@@ -61,9 +61,9 @@ public class Ej6Test {
         System.out.println(ej6.primeFactors(8).toString());
     }
 
-    /*@Test
+    @Test
     public void recursivePrimeFactors() throws Exception {
         System.out.println(ej6.recursivePrimeFactors(15).toString());
         System.out.println(ej6.recursivePrimeFactors(8).toString());
-    }*/
+    }
 }

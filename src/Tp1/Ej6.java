@@ -1,6 +1,8 @@
 package Tp1;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Ej 8 - Iterative & Recursive version
@@ -155,12 +157,15 @@ public class Ej6 {
      * @return an array list containing the prime factors of n.
      */
 
-    public  ArrayList<Integer> primeFactors(int n) {
-        ArrayList<Integer> factors = new ArrayList<>();
+    public  Set<Integer> primeFactors(int n) {
+        Set<Integer> factors = new HashSet<>();
+
+        factors.add(1);
+
         for (int i = 2; i <= n; i++) {
             while (n % i == 0) {
                 factors.add(i);
-                n /= i;
+                n = n / i;
             }
         }
         return factors;
@@ -175,9 +180,10 @@ public class Ej6 {
      * @return an array list containing the prime factors of n.
      */
 
-    public ArrayList<Integer> recursivePrimeFactors(int n){
-
-        return recursivePrimeFactors(n,1,new ArrayList<>());
+    public Set<Integer> recursivePrimeFactors(int n){
+        Set<Integer> set = new HashSet<>();
+        set.add(1);
+        return recursivePrimeFactors(n,2, set);
     }
 
     /**
@@ -188,15 +194,15 @@ public class Ej6 {
      * @param n integer to decompose.
      * @param i following integer to test as a prime factor.
      * @param factors list of prime factors of param n.
-     * @return an array list containing the prime factors of n.
+     * @return a set containing the prime factors of n.
      */
 
-    private ArrayList<Integer> recursivePrimeFactors(int n, int i, ArrayList<Integer> factors) {
+    private Set<Integer> recursivePrimeFactors(int n, int i, Set<Integer> factors) {
         if(n < i) {
             return factors;
         } else if(n % i == 0 && isPrime(i)){
             factors.add(i);
-            return recursivePrimeFactors(n/i, i+i, factors);
+            return recursivePrimeFactors(n/i, i+1, factors);
         } else {
             return recursivePrimeFactors(n, i+1, factors);
         }
