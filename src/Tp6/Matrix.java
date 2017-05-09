@@ -4,6 +4,7 @@ package Tp6;
  * Created by Lautaro Paskevicius (lautaro.paskevicius@ing.austral.edu.ar)
  * on 09/05/2017.
  */
+
 public class Matrix {
     private int rows;
     private int cols;
@@ -31,7 +32,7 @@ public class Matrix {
         return mat[row][col];
     }
 
-    public boolean isSquared(){
+    public boolean isSquare(){
         return rows == cols;
     }
 
@@ -52,12 +53,6 @@ public class Matrix {
         return mat[0].length;
     }
 
-    public int getRows() {
-        return rows;
-    }
-    public int getCols() {
-        return cols;
-    }
     public int[][] getMat() {
         return mat;
     }

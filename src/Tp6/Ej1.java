@@ -6,18 +6,18 @@ package Tp6;
 public class Ej1 {
 
     public int ejA(Matrix matrix){
-        if (matrix.isSquared()) {
+        if (matrix.isSquare()) {
             int result = 0;
             for (int i = 0; i < matrix.rowLength(); i++) {
                 result += matrix.getMat()[i][i];
             }
             return result;
         }
-        throw new RuntimeException("Invalid matrix, must be squared");
+        throw new RuntimeException("Invalid matrix, must be square");
     }
 
     public int ejB(Matrix matrix){
-        if (matrix.isSquared()){
+        if (matrix.isSquare()){
             int result = 0;
             for (int i = 0; i < matrix.rowLength(); i++){
                 for (int j = matrix.colLength(); j > 0; j--){
@@ -26,14 +26,14 @@ public class Ej1 {
             }
             return result;
         }
-        throw new RuntimeException("Invalid matrix, must be squared");
+        throw new RuntimeException("Invalid matrix, must be square");
     }
 
     public int[] ejC(Matrix matrix){
-        if (matrix.isSquared()){
+        if (matrix.isSquare()){
             int[] result = new int[matrix.rowLength()];
 
         }
-        throw new RuntimeException("Invalid matrix, must be squared");
+        throw new RuntimeException("Invalid matrix, must be square");
     }
 }
