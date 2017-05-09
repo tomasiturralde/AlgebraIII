@@ -48,9 +48,11 @@ public class Ej1 {
         if (matrix.rowLength() == vector.length){
             int[] result = new int[matrix.rowLength()];
             for (int i = 0; i < matrix.colLength(); i++){
+                int resultToAdd = 0;
                 for (int j = 0; j < matrix.rowLength(); j++){
-                    result[i] = matrix.getAt(j,i)*vector[j];
+                    resultToAdd += matrix.getAt(j,i)*vector[j];
                 }
+                result[i] = resultToAdd;
             }
             return result;
         }
@@ -68,5 +70,22 @@ public class Ej1 {
             return sum;
         }
         throw new RuntimeException("Both dimensions must be equal");
+    }
+
+    public Matrix ejF(Matrix matrixA, Matrix matrixB){
+        if (matrixA.rowLength() == matrixB.colLength()){
+            Matrix product = new Matrix(matrixA.colLength(), matrixB.rowLength());
+            for (int k = 0; k < matrixB.rowLength(); k++) {
+                for (int i = 0; i < matrixA.colLength(); i++) {
+                    int resultToAdd = 0;
+                    for (int j = 0; j < matrixA.rowLength(); j++) {
+                        resultToAdd += matrixA.getAt(i,j)*matrixB.getAt(k,j);
+                    }
+                    product.insert(resultToAdd, i, k);
+                }
+            }
+            return product;
+        }
+        throw new RuntimeException("The first matrix's columns must be equal to the second's rows");
     }
 }
