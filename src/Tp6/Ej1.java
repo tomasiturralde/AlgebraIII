@@ -3,9 +3,104 @@ package Tp6;
 /**
  * Created by Tomas on 9/5/2017.
  */
-public class Ej1 {
+public class Ej1 implements Exercise1{
 
-    public int ejA(Matrix matrix){
+    @Override
+    public double exerciseA(double[][] matrix, Calculator calculator) {
+        if (matrix.length == matrix[0].length) {
+            double result = 0;
+            for (int i = 0; i < matrix.length; i++) {
+                result += matrix[i][i];
+            }
+            return result;
+        }
+        throw new RuntimeException("Invalid matrix, must be square");
+    }
+
+    @Override
+    public double exerciseB(double[][] matrix, Calculator calculator) {
+        if (matrix.length == matrix[0].length){
+            double result = 0;
+            for (int i = 0; i < matrix.length; i++){
+                for (int j = matrix[0].length; j > 0; j--){
+                    result += matrix[i][j];
+                }
+            }
+            return result;
+        }
+        throw new RuntimeException("Invalid matrix, must be square");
+    }
+
+    @Override
+    public double[] exerciseC(double[][] matrix, Calculator calculator) {
+        if (matrix.length == matrix[0].length){
+            double[] result = new double[matrix.length];
+            for (int i = 0; i < matrix[0].length; i++){
+                double resultToAdd = 0;
+                for (int j = 0; j < matrix.length; j++){
+                    resultToAdd += matrix[j][i];
+                }
+                result[i] = resultToAdd;
+            }
+            return result;
+        }
+        throw new RuntimeException("Invalid matrix, must be square");
+    }
+
+    @Override
+    public double[] exerciseD(double[][] matrix, double[] vector, Calculator calculator) {
+        if (matrix.length == vector.length){
+            double[] result = new double[matrix.length];
+            for (int i = 0; i < matrix[0].length; i++){
+                double resultToAdd = 0;
+                for (int j = 0; j < matrix.length; j++){
+                    resultToAdd += matrix[j][i]*vector[j];
+                }
+                result[i] = resultToAdd;
+            }
+            return result;
+        }
+        throw new RuntimeException("The amount of columns in the matrix must be equal to the vector's length");
+    }
+
+    @Override
+    public double[][] exerciseE(double[][] matrixA, double[][] matrixB, Calculator calculator) {
+        if (matrixA.length == matrixB.length && matrixA[0].length == matrixB[0].length){
+            double[][] sum = new double[matrixA.length][matrixB[0].length];
+            for (int i = 0; i < matrixA.length; i++){
+                for (int j = 0; j < matrixB[0].length; j++){
+                    sum[i][j] = matrixA[i][j] + matrixB[i][j];
+                }
+            }
+            return sum;
+        }
+        throw new RuntimeException("Both dimensions must be equal");
+    }
+
+    @Override
+    public double[][] exerciseF(double[][] matrixA, double[][] matrixB, Calculator calculator) {
+        if (matrixA.length == matrixB[0].length){
+            double[][] product = new double[matrixA[0].length][matrixB.length];
+            for (int k = 0; k < matrixB.length; k++) {
+                for (int i = 0; i < matrixA[0].length; i++) {
+                    double resultToAdd = 0;
+                    for (int j = 0; j < matrixA.length; j++) {
+                        resultToAdd += matrixA[i][j]*matrixB[k][j];
+                    }
+                    product[i][k] = resultToAdd;
+                }
+            }
+            return product;
+        }
+        throw new RuntimeException("The first matrix's columns must be equal to the second's rows");
+    }
+
+    @Override
+    public double[][] exerciseG(double[][] matrix, Calculator calculator) {
+        return new double[0][];
+    }
+
+    /*public int ejA(Matrix matrix){
         if (matrix.isSquare()) {
             int result = 0;
             for (int i = 0; i < matrix.rowLength(); i++) {
@@ -87,5 +182,5 @@ public class Ej1 {
             return product;
         }
         throw new RuntimeException("The first matrix's columns must be equal to the second's rows");
-    }
+    }*/
 }
