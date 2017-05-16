@@ -1,9 +1,11 @@
 package Tp6;
 
+import Tp6.Interfaces.Calculator;
+
 /**
  * Created by Tomas on 16/5/2017.
  */
-public class CalculatoImpl implements Calculator{
+public class CalculatoImpl implements Calculator {
     private int sum, subtraction, multiplication, division;
 
     public CalculatoImpl(){

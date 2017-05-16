@@ -1,4 +1,4 @@
-package Tp6;
+package Tp6.Interfaces;
 
 public interface Node<T>{
 	
