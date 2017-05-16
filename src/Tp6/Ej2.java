@@ -28,15 +28,15 @@ public class Ej2 implements Exercise2{
 
     @Override
     public boolean exerciseB(double[][] matrix, Calculator calculator) {
-        int sum = 0;
+        double sum = 0;
 
         if(matrix.length == matrix[0].length){
             for(int i = 0; i < matrix.length; i++){
                 for(int j = 0; i < matrix[0].length; j++){
                     if(i == j) continue;
 
-                    sum += matrix[i][j];
-                    sum += matrix[j][i];
+                    sum = calculator.sum(sum, matrix[i][j]);
+                    sum = calculator.sum(sum, matrix[j][i]);
                 }
             }
 

@@ -10,7 +10,7 @@ public class Ej1 implements Exercise1{
         if (matrix.length == matrix[0].length) {
             double result = 0;
             for (int i = 0; i < matrix.length; i++) {
-                result += matrix[i][i];
+                result = calculator.sum(result,matrix[i][i]);
             }
             return result;
         }
@@ -23,7 +23,7 @@ public class Ej1 implements Exercise1{
             double result = 0;
             for (int i = 0; i < matrix.length; i++){
                 for (int j = matrix[0].length; j > 0; j--){
-                    result += matrix[i][j];
+                    result = calculator.sum(result,matrix[i][j]);
                 }
             }
             return result;
@@ -38,7 +38,7 @@ public class Ej1 implements Exercise1{
             for (int i = 0; i < matrix[0].length; i++){
                 double resultToAdd = 0;
                 for (int j = 0; j < matrix.length; j++){
-                    resultToAdd += matrix[j][i];
+                    resultToAdd = calculator.sum(resultToAdd,matrix[j][i]);
                 }
                 result[i] = resultToAdd;
             }
@@ -54,7 +54,7 @@ public class Ej1 implements Exercise1{
             for (int i = 0; i < matrix[0].length; i++){
                 double resultToAdd = 0;
                 for (int j = 0; j < matrix.length; j++){
-                    resultToAdd += matrix[j][i]*vector[j];
+                    resultToAdd = calculator.sum(resultToAdd,calculator.multiplication(matrix[j][i],vector[j]));
                 }
                 result[i] = resultToAdd;
             }
@@ -69,7 +69,7 @@ public class Ej1 implements Exercise1{
             double[][] sum = new double[matrixA.length][matrixB[0].length];
             for (int i = 0; i < matrixA.length; i++){
                 for (int j = 0; j < matrixB[0].length; j++){
-                    sum[i][j] = matrixA[i][j] + matrixB[i][j];
+                    sum[i][j] = calculator.sum(matrixA[i][j], matrixB[i][j]);
                 }
             }
             return sum;
@@ -85,7 +85,7 @@ public class Ej1 implements Exercise1{
                 for (int i = 0; i < matrixA[0].length; i++) {
                     double resultToAdd = 0;
                     for (int j = 0; j < matrixA.length; j++) {
-                        resultToAdd += matrixA[i][j]*matrixB[k][j];
+                        resultToAdd = calculator.sum(resultToAdd,calculator.multiplication(matrixA[i][j],matrixB[k][j]));
                     }
                     product[i][k] = resultToAdd;
                 }
