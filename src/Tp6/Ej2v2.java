@@ -7,7 +7,7 @@ import Tp6.Interfaces.Exercise2;
  * Created by Lautaro Paskevicius (lautaro.paskevicius@ing.austral.edu.ar)
  * on 09/05/2017.
  */
-public class Ej2 implements Exercise2 {
+public class Ej2v2 implements Exercise2 {
 
 
     @Override

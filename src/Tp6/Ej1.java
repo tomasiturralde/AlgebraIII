@@ -91,21 +91,22 @@ public class Ej1 implements Exercise1 {
 
     @Override
     public double[][] exerciseF(double[][] matrixA, double[][] matrixB, Calculator calculator) {
-        if (matrixA.length == matrixB[0].length){
-            double[][] product = new double[matrixA[0].length][matrixB.length];
-            for (int k = 0; k < matrixB.length; k++) {
-                for (int i = 0; i < matrixA[0].length; i++) {
-                    double resultToAdd = 0;
-                    for (int j = 0; j < matrixA.length; j++) {
-                        if (matrixA[i][j] != 0 && matrixB[k][j] != 0)
-                            resultToAdd = calculator.sum(resultToAdd,calculator.multiplication(matrixA[i][j],matrixB[k][j]));
+        if(matrixA[0].length == matrixB.length ){
+            double[][] result = new double[matrixA.length][matrixB[0].length];
+
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = 0; i < matrixA.length; i++){
+                    double toAdd = 0;
+                    for(int k = 0; k < matrixA.length; k++){
+                        toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],matrixB[k][j]));
                     }
-                    product[i][k] = resultToAdd;
+                    result[i][j] = toAdd;
                 }
             }
-            return product;
+            return result;
         }
-        throw new RuntimeException("The first matrix's columns must be equal to the second's rows");
+
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override

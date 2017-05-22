@@ -7,59 +7,66 @@ import Tp6.Interfaces.Exercise3;
  * Created by Tomas on 16/5/2017.
  */
 public class Ej3 implements Exercise3{
+
     @Override
-    public double[] exerciseAI(double[][] matrixA, double[] vectorX, Calculator calculator) {
-        if (matrixA.length == vectorX.length){
-            double[] result = new double[matrixA.length];
-            for (int i = 0; i < matrixA[0].length; i++){
-                double resultToAdd = 0;
-                for (int j = i; j < matrixA.length; j++){
-                    if (matrixA[j][i] != 0 && vectorX[j] != 0)
-                        resultToAdd = calculator.sum(resultToAdd,calculator.multiplication(matrixA[j][i],vectorX[j]));
+    public double[] exerciseAI(double[][] matrixA, double[] vector, Calculator calculator) {
+        if(matrixA[0].length == vector.length ){
+            double[] result = new double[vector.length];
+
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = 0; i <= j; i++){
+                    double toAdd = 0;
+                    for(int k = i; k <= j; k++){
+                        toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],vector[k]));
+                    }
+                    result[i] = toAdd;
+
                 }
-                result[i] = resultToAdd;
             }
+
             return result;
         }
-        throw new RuntimeException("The amount of columns in the matrix must be equal to the vector's length");
+
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override
     public double[][] exerciseAII(double[][] matrixA, double[][] matrixB, Calculator calculator) {
-        if (matrixA.length == matrixB.length && matrixA[0].length == matrixB[0].length){
-            double[][] sum = new double[matrixA.length][matrixB[0].length];
-            for (int i = 0; i < matrixA.length; i++){
-                for (int j = i; j < matrixB[0].length; j++){
-                    if (matrixA[i][j] == 0)
-                        sum[i][j] = matrixB[i][j];
-                    else if (matrixB[i][j] == 0)
-                        sum[i][j] = matrixA[i][j];
-                    else
-                        sum[i][j] = calculator.sum(matrixA[i][j], matrixB[i][j]);
+        if(matrixA[0].length == matrixB.length ){
+            double[][] result = new double[matrixA.length][matrixA.length];
+
+            for(int i = 0; i < matrixA.length; i++){
+                for(int j = i; j < matrixA[0].length; j++){
+                    result[i][j] = calculator.sum(matrixA[i][j], matrixB[i][j]);
                 }
             }
-            return sum;
+
+            return result;
         }
-        throw new RuntimeException("Both dimensions must be equal");
+
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override
     public double[][] exerciseAIII(double[][] matrixA, double[][] matrixB, Calculator calculator) {
-        if (matrixA.length == matrixB[0].length){
-            double[][] product = new double[matrixA[0].length][matrixB.length];
-            for (int k = 0; k < matrixB.length; k++) {
-                for (int i = 0; i < matrixA[0].length; i++) {
-                    double resultToAdd = 0;
-                    for (int j = 0; j < matrixA.length; j++) {
-                        if (matrixA[i][j] != 0 && matrixB[k][j] != 0)
-                            resultToAdd = calculator.sum(resultToAdd,calculator.multiplication(matrixA[i][j],matrixB[k][j]));
+        if(matrixA[0].length == matrixB.length ){
+            double[][] result = new double[matrixA.length][matrixB[0].length];
+
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = 0; i <= j; i++){
+                    double toAdd = 0;
+                    for(int k = i; k <= j; k++){
+                        toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],matrixB[k][j]));
                     }
-                    product[i][k] = resultToAdd;
+                    result[i][j] = toAdd;
+
                 }
             }
-            return product;
+
+            return result;
         }
-        throw new RuntimeException("The first matrix's columns must be equal to the second's rows");
+
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override
@@ -74,7 +81,22 @@ public class Ej3 implements Exercise3{
 
     @Override
     public double[][] exerciseBIII(double[][] matrixA, double[][] matrixB, Calculator calculator) {
-        return new double[0][];
+        if(matrixA[0].length == matrixB.length ){
+            double[][] result = new double[matrixA.length][matrixB[0].length];
+
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = j; i < matrixA.length; i++){
+                    double toAdd = 0;
+                    for(int k = matrixA.length - i; k < matrixA.length; k++){
+                        toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],matrixB[k][j]));
+                    }
+                    result[i][j] = toAdd;
+                }
+            }
+            return result;
+        }
+
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override
@@ -110,5 +132,15 @@ public class Ej3 implements Exercise3{
     @Override
     public double[][] exerciseE(double[][] matrixA, double[][] matrixB, Calculator calculator) {
         return new double[0][];
+    }
+
+
+    public void print(double[][] result) {
+        for(int i = 0; i < result.length; i++){
+            for (int j = 0; j < result[0].length; j++){
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
