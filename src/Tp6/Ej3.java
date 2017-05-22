@@ -131,7 +131,17 @@ public class Ej3 implements Exercise3{
 
     @Override
     public double[][] exerciseE(double[][] matrixA, double[][] matrixB, Calculator calculator) {
-        return new double[0][];
+        double[][] result = new double[matrixA[0].length][matrixB.length];
+        for (int i = 0; i < matrixA[0].length; i++) {
+            for (int k = 0; k < matrixB.length; k++) {
+                double resultToAdd = 0;
+                for (int j = 0, l = 0; j <= i && l <= k; j++, l++) {
+                    resultToAdd = calculator.sum(resultToAdd,calculator.multiplication(matrixA[i][j],matrixB[l][k]));
+                }
+                result[i][k] = resultToAdd;
+            }
+        }
+        return result;
     }
 
 
