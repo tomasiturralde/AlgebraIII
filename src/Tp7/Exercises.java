@@ -4,6 +4,11 @@ package Tp7;
  * Created by Tomas on 23/5/2017.
  */
 public class Exercises implements TP4 {
+
+    public double[][] exercise1(int n, double[][] coefficients, double[] independentTerms) {
+        return extend(coefficients, independentTerms);
+    }
+
     @Override
     public double[] exercise1(double[][] coefficients, double[] independentTerms) {
         return new double[0];
@@ -42,5 +47,30 @@ public class Exercises implements TP4 {
     @Override
     public double[] exercise9(double[][] coefficients, double[] independentTerms) {
         return new double[0];
+    }
+
+    void print(double[][] mat){
+        for(int i=0; i < mat.length; i++){
+            for(int j=0; j < mat[0].length; j++){
+                System.out.print(mat[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    private double[][] extend(double[][] coefficients, double[] independentTerms){
+        double[][] extendedMat = new double[coefficients.length][coefficients[0].length+1];
+
+        for(int i = 0; i < coefficients.length; i++){
+            for(int j = 0; j < coefficients.length; j++){
+                extendedMat[i][j] = coefficients[i][j];
+            }
+        }
+
+        for(int i = 0; i < extendedMat.length; i++){
+            extendedMat[i][coefficients.length] = independentTerms[i];
+        }
+
+        return extendedMat;
     }
 }
