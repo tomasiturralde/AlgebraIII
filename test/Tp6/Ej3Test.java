@@ -89,7 +89,7 @@ public class Ej3Test {
         double[][] matrix2 = {{2,2,2,2},
                 {2,2,2,2},
                 {0,2,2,2},
-                {1,0,2,2}};
+                {0,0,2,2}};
 
         Ej3 ej3 = new Ej3();
 

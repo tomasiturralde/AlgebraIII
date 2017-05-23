@@ -97,7 +97,7 @@ public class Ej3 implements Exercise3{
             for(int j = 0; j < matrixA.length; j++){
                 for(int i = 0; i < matrixA.length; i++){
                     double toAdd = 0;
-                    for(int k = i; k < j+2 && k < matrixA.length; k++){
+                    for(int k = i; k <= j+1 && k < matrixA.length; k++){
                         toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],matrixB[k][j]));
                     }
                     result[i][j] = toAdd;
