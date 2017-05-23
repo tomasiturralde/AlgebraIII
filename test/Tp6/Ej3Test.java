@@ -103,7 +103,7 @@ public class Ej3Test {
                               {0,2,2,2},
                               {0,0,2,2}};
 
-        double[] vector = {1,1,1};
+        double[] vector = {1,1,1,1};
         Ej3 ej3 = new Ej3();
 
         double[] result = ej3.exerciseCI(matrix2,vector, new CalculatorImpl());

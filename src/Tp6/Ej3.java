@@ -140,10 +140,10 @@ public class Ej3 implements Exercise3{
         if(matrixA[0].length == matrixB.length ){
             double[][] result = new double[matrixA.length][matrixB[0].length];
 
-            for(int j = 0; j < matrixA.length; j++){
-                for(int i = 0; i < matrixA.length; i++){
+            for(int j = 0; j <= matrixA.length-1; j++){
+                for(int i = 0; i <= matrixA.length-1; i++){
                     double toAdd = 0;
-                    for(int k = i; k <= j+1 && k < matrixA.length; k++){
+                    for(int k = 0; k <= matrixA.length-1; k++){
                         toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],matrixB[k][j]));
                     }
                     result[i][j] = toAdd;
@@ -164,7 +164,23 @@ public class Ej3 implements Exercise3{
      */
     @Override
     public double[] exerciseCI(double[][] matrixA, double[] vectorX, Calculator calculator) {
-        return new double[0];
+        if(matrixA[0].length == vectorX.length ){
+            double[] result = new double[vectorX.length];
+
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = 0; i < matrixA.length; i++){
+                    double toAdd = 0;
+                    for(int k = 0; Math.abs(j - i) <= 1 && k < vectorX.length; k++){
+                        toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],vectorX[k]));
+                    }
+                    if(Math.abs(j - i) <= 1) j++;
+                    result[i] = toAdd;
+                }
+            }
+            return result;
+        }
+
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     /**
