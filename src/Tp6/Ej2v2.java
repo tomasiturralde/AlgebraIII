@@ -4,19 +4,24 @@ import Tp6.Interfaces.Calculator;
 import Tp6.Interfaces.Exercise2;
 
 /**
- * Created by Lautaro Paskevicius (lautaro.paskevicius@ing.austral.edu.ar)
- * on 09/05/2017.
+ * Implementation of the methods on pratice 6, exercise 2.
+ * @author Tomas Iturralde
+ * @author Lautaro Paskevicius
  */
 public class Ej2v2 implements Exercise2 {
 
-
+    /**
+     * Method used to check if a matrix is symmetric.
+     * @param matrix to be used for the calculation (must be square).
+     * @param calculator used to do mathematical operations while having a counter for each time an operation has been done.
+     * @return true if it's symmetric, false if otherwise.
+     */
     @Override
     public boolean exerciseA(double[][] matrix, Calculator calculator) {
-        boolean answer = true;
-
         if(matrix.length == matrix[0].length){
+            boolean answer = true;
             for(int i = 0; i < matrix.length; i++){
-                for(int j = 0; i < matrix[0].length; j++){
+                for(int j = 0; j < matrix[0].length; j++){
                     if(i == j) continue;
 
                     if(matrix[i][j] != matrix[j][i]) answer = false;
@@ -29,33 +34,25 @@ public class Ej2v2 implements Exercise2 {
         throw new RuntimeException("Invalid matrix. Must be square.");
     }
 
+    /**
+     * Method used to check if a matrix is diagonally dominant.
+     * @param matrix to be used for the calculation (must be square).
+     * @param calculator used to do mathematical operations while having a counter for each time an operation has been done.
+     * @return true if it's diagonally dominant, false if otherwise.
+     */
     @Override
     public boolean exerciseB(double[][] matrix, Calculator calculator) {
-        double sum = 0;
-
-        if(matrix.length == matrix[0].length){
-            for(int i = 0; i < matrix.length; i++){
-                for(int j = 0; i < matrix[0].length; j++){
-                    if(i == j) continue;
-
-                    sum = calculator.sum(sum, matrix[i][j]);
-                    sum = calculator.sum(sum, matrix[j][i]);
+        if(matrix.length == matrix[0].length) {
+            for (int i = 0; i < matrix.length; i++) {
+                double sum = 0;
+                double diagonal = matrix[i][i];
+                for (int j = 0; j < matrix[0].length; j++) {
+                    if (i != j) calculator.sum(sum, Math.abs(matrix[i][j]));
                 }
+                if (diagonal < sum) return false;
             }
-
-            for(int i = 0; i < matrix.length; i++){
-                int j = 0;
-
-                while(j < i){
-                    j++;
-                }
-
-                if(sum >= matrix[i][j]) return false;
-            }
-
             return true;
         }
-
         throw new RuntimeException("Invalid matrix. Must be square.");
     }
 }
