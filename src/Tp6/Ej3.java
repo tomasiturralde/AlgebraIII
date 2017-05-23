@@ -59,7 +59,6 @@ public class Ej3 implements Exercise3{
                         toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],matrixB[k][j]));
                     }
                     result[i][j] = toAdd;
-
                 }
             }
 
@@ -76,7 +75,18 @@ public class Ej3 implements Exercise3{
 
     @Override
     public double[][] exerciseBII(double[][] matrixA, double[][] matrixB, Calculator calculator) {
-        return new double[0][];
+        if(matrixA[0].length == matrixB.length ){
+            double[][] result = new double[matrixA.length][matrixB[0].length];
+
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = 0;i < j+2 && i < matrixA.length; i++){
+                    result[i][j] = calculator.sum(matrixA[i][j],matrixB[i][j]);
+                }
+            }
+            return result;
+        }
+
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override
@@ -85,9 +95,9 @@ public class Ej3 implements Exercise3{
             double[][] result = new double[matrixA.length][matrixB[0].length];
 
             for(int j = 0; j < matrixA.length; j++){
-                for(int i = j; i < matrixA.length; i++){
+                for(int i = 0; i < matrixA.length; i++){
                     double toAdd = 0;
-                    for(int k = matrixA.length - i; k < matrixA.length; k++){
+                    for(int k = i; k < j+2 && k < matrixA.length; k++){
                         toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],matrixB[k][j]));
                     }
                     result[i][j] = toAdd;
@@ -106,27 +116,93 @@ public class Ej3 implements Exercise3{
 
     @Override
     public double[][] exerciseCII(double[][] matrixA, double[][] matrixB, Calculator calculator) {
-        return new double[0][];
+        if(matrixA[0].length == matrixB.length ){
+            double[][] result = new double[matrixA.length][matrixB[0].length];
+
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = 0; i < matrixA.length ;i++){
+                    if(Math.abs(j - i) <= 1 ) result[i][j] = calculator.sum(matrixA[i][j], matrixB[i][j]);
+                }
+            }
+            return result;
+        }
+
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override
     public double[][] exerciseCIII(double[][] matrixA, double[][] matrixB, Calculator calculator) {
-        return new double[0][];
+        if(matrixA[0].length == matrixB.length ){
+            double[][] result = new double[matrixA.length][matrixB[0].length];
+
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = 0; i < matrixA.length; i++){
+                    double toAdd = 0;
+                    for(int k = 0; k < matrixA.length; k++){
+                        if(Math.abs(j - i) <= 2)
+                            toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],matrixB[k][j]));
+                    }
+                    result[i][j] = toAdd;
+                }
+            }
+            return result;
+        }
+
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override
     public double[] exerciseDI(double[][] matrixA, int k1A, int k2A, double[] vectorX, Calculator calculator) {
-        return new double[0];
+        if(matrixA[0].length == vectorX.length ){
+            if(k1A != k2A) System.out.println("Only works with p - diagonal matrices!");
+            double[] result = new double[vectorX.length];
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = 0; i < matrixA.length; i++){
+                    double toAdd = 0;
+                    for(int k = 0; k < matrixA.length; k++){
+                        if(Math.abs(j - i) <= k1A+1)
+                            toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],vectorX[k]));
+                    }
+                    result[i] = toAdd;
+                }
+            }
+            return result;
+        }
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override
     public double[][] exerciseDII(double[][] matrixA, int k1A, int k2A, double[][] matrixB, int k1B, int k2B, Calculator calculator) {
-        return new double[0][];
+        if(matrixA[0].length == matrixB.length ){
+            double[][] result = new double[matrixA.length][matrixB[0].length];
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = 0; i < matrixA.length ;i++){
+                    if(Math.abs(j - i) <= k1A ) result[i][j] = calculator.sum(matrixA[i][j], matrixB[i][j]);
+                }
+            }
+            return result;
+        }
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override
     public double[][] exerciseDIII(double[][] matrixA, int k1A, int k2A, double[][] matrixB, int k1B, int k2B, Calculator calculator) {
-        return new double[0][];
+        if(matrixA[0].length == matrixB.length ){
+            if(k1A != k2A || k1B != k2B || k1A != k1B) System.out.println("Only works with p - diagonal matrices!");
+            double[][] result = new double[matrixA.length][matrixB[0].length];
+            for(int j = 0; j < matrixA.length; j++){
+                for(int i = 0; i < matrixA.length; i++){
+                    double toAdd = 0;
+                    for(int k = 0; k < matrixA.length; k++){
+                        if(Math.abs(j - i) <= k1A + 1)
+                            toAdd = calculator.sum(toAdd, calculator.multiplication(matrixA[i][k],matrixB[k][j]));
+                    }
+                    result[i][j] = toAdd;
+                }
+            }
+            return result;
+        }
+        throw new RuntimeException("Matrices dimensions are not correct!");
     }
 
     @Override
