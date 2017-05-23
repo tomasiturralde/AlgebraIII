@@ -30,7 +30,19 @@ public class Exercises implements TP4 {
 
     @Override
     public double[] exercise5WithoutPivoteo(double[][] coefficients, double[] independentTerms) {
-        return new double[0];
+        for (int k = 0; k < coefficients.length; k++) {
+            double diagonal = coefficients[k][k];
+            for (int j = k; j < coefficients[0].length; j++)
+                coefficients[k][j] = (coefficients[k][j]/diagonal);
+            independentTerms[k] = (independentTerms[k]/diagonal);
+            for (int i = k+1; i < coefficients.length; i++) {
+                double multiplier = coefficients[i][k];
+                for (int j = k; j < coefficients[0].length; j++)
+                    coefficients[i][j] = (coefficients[i][j] - multiplier*coefficients[k][j]);
+                independentTerms[i] = independentTerms[i] - multiplier*independentTerms[k];
+            }
+        }
+        return exercise1(coefficients, independentTerms);
     }
 
     @Override
