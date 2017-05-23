@@ -5,10 +5,10 @@ import Tp6.Interfaces.Calculator;
 /**
  * Created by Tomas on 16/5/2017.
  */
-public class CalculatoImpl implements Calculator {
+public class CalculatorImpl implements Calculator {
     private int sum, subtraction, multiplication, division;
 
-    public CalculatoImpl(){
+    public CalculatorImpl(){
         sum = subtraction = multiplication = division = 0;
     }
 
