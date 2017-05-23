@@ -13,12 +13,25 @@ public class ExercisesTest {
     public void exercise1() throws Exception {
         Exercises exc = new Exercises();
 
-        double[][] matA = {{1,1,1},{0,1,1},{0,0,1}};
-        double[] vec = {1,1,1};
+        double[][] matA = {{1,1,1},
+                           {0,1,1},
+                           {0,0,1}};
 
-        double[][] res = exc.exercise1(1,matA,vec);
+        double[] vec1 = {1,1,1};
 
-        exc.print(res);
+        double[][] matB = {{1,1,1},
+                {0,1,1},
+                {0,0,1}};
+
+        double[] vec2 = {2,1,1};
+
+        for (double e : exc.exercise1(matA,vec1)){
+            System.out.println(e);
+        }
+        System.out.println();
+        for (double e : exc.exercise1(matB,vec2)){
+            System.out.println(e);
+        }
     }
 
 }

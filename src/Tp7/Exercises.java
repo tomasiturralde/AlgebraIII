@@ -5,13 +5,22 @@ package Tp7;
  */
 public class Exercises implements TP4 {
 
-    public double[][] exercise1(int n, double[][] coefficients, double[] independentTerms) {
-        return extend(coefficients, independentTerms);
-    }
-
     @Override
     public double[] exercise1(double[][] coefficients, double[] independentTerms) {
-        return new double[0];
+
+        double[] solution = new double[independentTerms.length];
+
+        for(int i = coefficients.length-1; i >= 0; i--){
+            double isolate = 0;
+
+            for(int j = i+1; j < coefficients.length; j++){
+                isolate += coefficients[i][j] * solution[j];
+            }
+
+            solution[i] = independentTerms[i] - isolate;
+        }
+
+        return solution;
     }
 
     @Override
