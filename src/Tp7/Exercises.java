@@ -5,13 +5,22 @@ package Tp7;
  */
 public class Exercises implements TP4 {
 
-    public double[][] exercise1(int n, double[][] coefficients, double[] independentTerms) {
-        return extend(coefficients, independentTerms);
-    }
-
     @Override
     public double[] exercise1(double[][] coefficients, double[] independentTerms) {
-        return new double[0];
+        double[][] extendedMat = extend(coefficients, independentTerms);
+
+        double[] solution = new double[independentTerms.length];
+        solution[extendedMat.length] = independentTerms[independentTerms.length-1];
+        
+        for(int i = extendedMat.length-2; i > 0; i--){
+            double isolated = 0.0;
+            for(int j=i+1; j < extendedMat[0].length; j++){
+                isolated =+ extendedMat[i][j]*solution[j];
+            }
+            solution[i] = extendedMat[i][extendedMat.length-1] - isolated;
+        }
+
+        return solution;
     }
 
     @Override
@@ -58,7 +67,7 @@ public class Exercises implements TP4 {
         }
     }
 
-    private double[][] extend(double[][] coefficients, double[] independentTerms){
+    public double[][] extend(double[][] coefficients, double[] independentTerms){
         double[][] extendedMat = new double[coefficients.length][coefficients[0].length+1];
 
         for(int i = 0; i < coefficients.length; i++){
