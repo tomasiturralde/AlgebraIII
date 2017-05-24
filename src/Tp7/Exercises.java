@@ -25,7 +25,17 @@ public class Exercises implements TP4 {
 
     @Override
     public double[] exercise2(double[][] coefficients, double[] independentTerms) {
-        return new double[0];
+        double[] solution = new double[independentTerms.length];
+
+        for(int i = 0; i < coefficients.length; i++){
+            double isolate = 0;
+            for(int j = 0; j < i; j++){
+                isolate += coefficients[i][j] * solution[j];
+            }
+            solution[i] = (independentTerms[i] - isolate) / coefficients[i][i];
+        }
+
+        return solution;
     }
 
     @Override

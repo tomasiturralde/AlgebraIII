@@ -10,6 +10,31 @@ import static org.junit.Assert.*;
  */
 public class ExercisesTest {
     @Test
+    public void exercise2() throws Exception {
+        Exercises exc = new Exercises();
+
+        double[][] matA = {{1,0,0},
+                {1,1,0},
+                {1,1,1}};
+
+        double[] vec1 = {1,1,1};
+
+        double[][] matB = {{1,0,0},
+                {1,1,0},
+                {1,1,1}};
+
+        double[] vec2 = {1,1,2};
+
+        for (double e : exc.exercise2(matA,vec1)){
+            System.out.println(e);
+        }
+        System.out.println();
+        for (double e : exc.exercise2(matB,vec2)){
+            System.out.println(e);
+        }
+    }
+
+    @Test
     public void exercise1() throws Exception {
         Exercises exc = new Exercises();
 
@@ -41,9 +66,9 @@ public class ExercisesTest {
         Exercises exercises = new Exercises();
         exercises.print(coefficients);
         double[] result1 = exercises.exercise5WithoutPivoteo(coefficients,independent);
-        double[][] result =  exercises.blabla(coefficients,independent);
+       // double[][] result =  exercises.blabla(coefficients,independent);
         System.out.println("------");
-        exercises.print(result);
+        //exercises.print(result);
         System.out.println("-----");
         for (double aResult : result1) {
             System.out.println(aResult + ", ");
