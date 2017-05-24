@@ -44,6 +44,16 @@ public class ExercisesTest {
 
         double[] vec1 = {1,1,1};
 
+<<<<<<< HEAD
+        double[][] res = exc.extend(matA,vec);
+
+        exc.print(res);
+
+        System.out.println("\nrows: " + res.length);
+        System.out.println("col: " + res[0].length + "\n");
+
+        for(double e : exc.exercise1(matA,vec)){
+=======
         double[][] matB = {{1,1,1},
                 {0,1,1},
                 {0,0,1}};
@@ -55,6 +65,7 @@ public class ExercisesTest {
         }
         System.out.println();
         for (double e : exc.exercise1(matB,vec2)){
+>>>>>>> 9ade08236d8eb6e8027cdda540340a24cec4915f
             System.out.println(e);
         }
     }

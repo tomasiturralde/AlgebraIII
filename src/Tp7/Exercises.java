@@ -7,6 +7,7 @@ public class Exercises implements TP4 {
 
     @Override
     public double[] exercise1(double[][] coefficients, double[] independentTerms) {
+<<<<<<< HEAD
         double[][] extendedMat = extend(coefficients, independentTerms);
 
         double[] solution = new double[independentTerms.length];
@@ -18,6 +19,19 @@ public class Exercises implements TP4 {
                 isolated =+ extendedMat[i][j]*solution[j];
             }
             solution[i] = extendedMat[i][extendedMat.length-1] - isolated;
+=======
+
+        double[] solution = new double[independentTerms.length];
+
+        for(int i = coefficients.length-1; i >= 0; i--){
+            double isolate = 0;
+
+            for(int j = i+1; j < coefficients.length; j++){
+                isolate += coefficients[i][j] * solution[j];
+            }
+
+            solution[i] = independentTerms[i] - isolate;
+>>>>>>> 9ade08236d8eb6e8027cdda540340a24cec4915f
         }
 
         return solution;
@@ -25,12 +39,34 @@ public class Exercises implements TP4 {
 
     @Override
     public double[] exercise2(double[][] coefficients, double[] independentTerms) {
-        return new double[0];
+        double[] solution = new double[independentTerms.length];
+
+        for(int i = 0; i < coefficients.length; i++){
+            double isolate = 0;
+            for(int j = 0; j < i; j++){
+                isolate += coefficients[i][j] * solution[j];
+            }
+            solution[i] = (independentTerms[i] - isolate) / coefficients[i][i];
+        }
+
+        return solution;
     }
 
     @Override
     public double[] exercise5WithoutPivoteo(double[][] coefficients, double[] independentTerms) {
-        return new double[0];
+        for (int k = 0; k < coefficients.length; k++) {
+            double diagonal = coefficients[k][k];
+            for (int j = k; j < coefficients[0].length; j++)
+                coefficients[k][j] = (coefficients[k][j]/diagonal);
+            independentTerms[k] = (independentTerms[k]/diagonal);
+            for (int i = k+1; i < coefficients.length; i++) {
+                double multiplier = coefficients[i][k];
+                for (int j = k; j < coefficients[0].length; j++)
+                    coefficients[i][j] = (coefficients[i][j] - multiplier*coefficients[k][j]);
+                independentTerms[i] = independentTerms[i] - multiplier*independentTerms[k];
+            }
+        }
+        return exercise1(coefficients, independentTerms);
     }
 
     @Override
