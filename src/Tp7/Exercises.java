@@ -67,7 +67,21 @@ public class Exercises implements TP4 {
 
     @Override
     public double[] exercise7(double[][] coefficients, double[] independentTerms, Calculator calculator) {
-        return new double[0];
+        for(int k = 0; k < coefficients.length; k++){
+            for(int i = 0; k < coefficients.length; i++){
+                for(int j = k; j < coefficients.length; j++){
+                    if(i == k){
+                        coefficients[k][j] = calculator.division(coefficients[k][j],coefficients[k][k]);
+                        independentTerms[k] = calculator.division(independentTerms[k],coefficients[k][k]);
+                    } else {
+                        coefficients[i][j] = calculator.subtraction(coefficients[i][j],calculator.multiplication(coefficients[i][k],coefficients[k][j]));
+                        independentTerms[i] = calculator.subtraction(independentTerms[i],calculator.multiplication(coefficients[i][k],independentTerms[k]));
+                    }
+                }
+            }
+        }
+
+        return independentTerms;
     }
 
     @Override

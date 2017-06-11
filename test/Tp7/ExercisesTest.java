@@ -10,6 +10,22 @@ import static org.junit.Assert.*;
  */
 public class ExercisesTest {
     @Test
+    public void exercise7() throws Exception {
+        Exercises exc = new Exercises();
+
+        double[][] matA = {{1,1,1},
+                {0,1,1},
+                {0,0,1}};
+
+        double[] vec1 = {1,1,1};
+
+        for (double e : exc.exercise7(matA,vec1, new CalculatorImpl())){
+            System.out.println(e);
+        }
+
+    }
+
+    @Test
     public void exercise2() throws Exception {
         Exercises exc = new Exercises();
 
@@ -37,6 +53,8 @@ public class ExercisesTest {
     @Test
     public void exercise1() throws Exception {
         Exercises exc = new Exercises();
+
+        //Ahh que verga no se que onda, a mi me anda joya
 
         double[][] matA = {{1,1,1},
                            {0,1,1},
