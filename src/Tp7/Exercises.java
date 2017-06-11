@@ -7,19 +7,6 @@ public class Exercises implements TP4 {
 
     @Override
     public double[] exercise1(double[][] coefficients, double[] independentTerms) {
-<<<<<<< HEAD
-        double[][] extendedMat = extend(coefficients, independentTerms);
-
-        double[] solution = new double[independentTerms.length];
-        solution[extendedMat.length] = independentTerms[independentTerms.length-1];
-        
-        for(int i = extendedMat.length-2; i > 0; i--){
-            double isolated = 0.0;
-            for(int j=i+1; j < extendedMat[0].length; j++){
-                isolated =+ extendedMat[i][j]*solution[j];
-            }
-            solution[i] = extendedMat[i][extendedMat.length-1] - isolated;
-=======
 
         double[] solution = new double[independentTerms.length];
 
@@ -31,7 +18,6 @@ public class Exercises implements TP4 {
             }
 
             solution[i] = independentTerms[i] - isolate;
->>>>>>> 9ade08236d8eb6e8027cdda540340a24cec4915f
         }
 
         return solution;
