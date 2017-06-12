@@ -67,26 +67,50 @@ public class Exercises implements TP4 {
 
     @Override
     public double[] exercise7(double[][] coefficients, double[] independentTerms, Calculator calculator) {
-        for(int k = 0; k < coefficients.length; k++){
-            for(int i = 0; k < coefficients.length; i++){
-                for(int j = k; j < coefficients.length; j++){
-                    if(i == k){
-                        coefficients[k][j] = calculator.division(coefficients[k][j],coefficients[k][k]);
-                        independentTerms[k] = calculator.division(independentTerms[k],coefficients[k][k]);
-                    } else {
-                        coefficients[i][j] = calculator.subtraction(coefficients[i][j],calculator.multiplication(coefficients[i][k],coefficients[k][j]));
-                        independentTerms[i] = calculator.subtraction(independentTerms[i],calculator.multiplication(coefficients[i][k],independentTerms[k]));
+        return new double[0];
+    }
+
+    @Override
+    public double[][] exercise8(double[][] coefficients) {
+        double[][] identity = new double[coefficients.length][coefficients.length];
+
+        for(int i = 0; i < identity.length; i++){
+            for (int j = 0; j < identity.length; j++){
+                if(i == j) identity[i][j] = 1;
+                else identity[i][j] = 0;
+            }
+        }
+
+        double[][] extendedMat = extend(coefficients,identity);
+
+        for(int k = 0; k < extendedMat.length; k++){
+
+            double pivotA = extendedMat[k][k];
+
+            for(int j = k; j < extendedMat[0].length; j++){
+                extendedMat[k][j] = extendedMat[k][j]/pivotA;
+            }
+
+            for(int i = 0; i < extendedMat.length; i++){
+                if(i != k){
+                    double pivotB = extendedMat[i][k];
+
+                    for(int j = k; j < extendedMat[0].length; j++){
+                        extendedMat[i][j] = extendedMat[i][j] - (pivotB * extendedMat[k][j]);
                     }
                 }
             }
         }
 
-        return independentTerms;
-    }
+        double[][] result = new double[extendedMat.length][extendedMat.length];
 
-    @Override
-    public double[][] exercise8(double[][] coefficients) {
-        return new double[0][];
+        for(int i = 0; i < result.length; i++){
+            for (int j = 0; j < result.length; j++){
+                result[i][j] = extendedMat[i][coefficients.length+j];
+            }
+        }
+
+        return result;
     }
 
     @Override
@@ -118,4 +142,23 @@ public class Exercises implements TP4 {
 
         return extendedMat;
     }
+
+    public double[][] extend(double[][] coefficients, double[][] identity){
+        double[][] extendedMat = new double[coefficients.length][coefficients.length + identity.length];
+
+        for(int i = 0; i < coefficients.length; i++){
+            for(int j = 0; j < coefficients.length; j++){
+                extendedMat[i][j] = coefficients[i][j];
+            }
+        }
+
+        for(int i = 0; i < extendedMat.length; i++){
+            for (int j = 0; j < identity.length ; j++){
+                extendedMat[i][coefficients.length+j] = identity[i][j];
+            }
+        }
+
+        return extendedMat;
+    }
+
 }

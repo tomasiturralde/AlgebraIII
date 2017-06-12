@@ -9,19 +9,25 @@ import static org.junit.Assert.*;
  * on 23/05/2017.
  */
 public class ExercisesTest {
+
+    @Test
+    public void exercise8() throws Exception {
+        Exercises exercises = new Exercises();
+
+        double[][] matA = {{2,2,2},
+                {6,0,2},
+                {4,4,8}};
+
+        //{0.1666 , 0.1666 , -0.8333}       Result calculated w/ matrix.reshish.com
+        //{0.8333 , -0.1666 , -0.1666}
+        //{-0.5 , 0 , 0.25}
+
+        exercises.print(exercises.exercise8(matA));
+
+    }
+
     @Test
     public void exercise7() throws Exception {
-        Exercises exc = new Exercises();
-
-        double[][] matA = {{1,1,1},
-                {0,1,1},
-                {0,0,1}};
-
-        double[] vec1 = {1,1,1};
-
-        for (double e : exc.exercise7(matA,vec1, new CalculatorImpl())){
-            System.out.println(e);
-        }
 
     }
 
