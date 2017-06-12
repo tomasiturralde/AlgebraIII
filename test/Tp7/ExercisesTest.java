@@ -29,7 +29,17 @@ public class ExercisesTest {
 
     @Test
     public void exercise7() throws Exception {
+        Exercises exc = new Exercises();
 
+        double[][] matA = {{1,2,0},
+                {2,3,1},
+                {0,2,4}};
+
+        double[] vec1 = {3,6,6};
+
+        for (double e : exc.exercise7(matA,vec1,new CalculatorImpl())){
+            System.out.println(e);
+        }
     }
 
     @Test
@@ -51,7 +61,9 @@ public class ExercisesTest {
         for (double e : exc.exercise2(matA,vec1)){
             System.out.println(e);
         }
+
         System.out.println();
+
         for (double e : exc.exercise2(matB,vec2)){
             System.out.println(e);
         }

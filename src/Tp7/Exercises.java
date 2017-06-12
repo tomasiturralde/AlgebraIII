@@ -143,7 +143,30 @@ public class Exercises implements TP4 {
      */
     @Override
     public double[] exercise7(double[][] coefficients, double[] independentTerms, Calculator calculator) {
-        return new double[0];
+        //First step
+        coefficients[0][1] = calculator.division(coefficients[0][1],coefficients[0][0]);
+        independentTerms[0] = calculator.division(independentTerms[0],coefficients[0][0]);
+
+        for(int i = 1; i < coefficients.length-1; i++){
+           coefficients[i][i+1] = calculator.division(coefficients[i][i+1],(calculator.subtraction(coefficients[i][i],calculator.multiplication(coefficients[i-1][i],coefficients[i][i-1]))));
+           double num = calculator.subtraction(independentTerms[i],calculator.multiplication(independentTerms[i-1],coefficients[i][i-1]));
+           double denom = calculator.subtraction(independentTerms[i],calculator.multiplication(coefficients[i-1][i],coefficients[i][i-1]));
+           independentTerms[i] = calculator.division(num,denom);
+        }
+
+        //do extra step w/ independent terms (n)
+        double num = calculator.subtraction(independentTerms[coefficients.length-1],calculator.multiplication(independentTerms[coefficients.length-1-1],coefficients[coefficients.length-1][coefficients.length-1-1]));
+        double denom = calculator.subtraction(coefficients[coefficients.length-1][coefficients.length-1],calculator.multiplication(coefficients[coefficients.length-1-1][coefficients.length-1],coefficients[coefficients.length-1][coefficients.length-1-1]));
+        double denom1 = coefficients[coefficients.length-1][coefficients.length-1] - coefficients[coefficients.length-1-1][coefficients.length-1] * coefficients[coefficients.length-1][coefficients.length-1-1];
+
+        //Now, solve
+        //N-term has already been assigned ( Xn = D'n)
+
+        for(int i = coefficients.length-2; i >= 0; i--){
+            independentTerms[i] = independentTerms[i] - coefficients[i][i+1] * independentTerms[i+1];
+        }
+
+        return independentTerms;
     }
 
     /**
