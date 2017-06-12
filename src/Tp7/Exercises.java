@@ -202,7 +202,22 @@ public class Exercises implements TP4 {
      */
     @Override
     public double[] exercise9(double[][] coefficients, double[] independentTerms) {
-        return new double[0];
+        double[][] UMatrix = new double[coefficients.length][coefficients[0].length];
+        double[][] LMatrix = new double[coefficients.length][coefficients[0].length];
+        for (int k = 0; k < coefficients.length; k++) {
+            for (int j = k; j < coefficients.length; j++) {
+                double u = 0;
+                double l = 0;
+                for (int p = 0; p < k; p++) {
+                    u += LMatrix[k][p] * UMatrix[p][j];
+                    l += LMatrix[j][p] * UMatrix[p][k];
+                }
+                UMatrix[k][j] = coefficients[k][j] - u;
+                LMatrix[j][k] = (coefficients[j][k] - l) / UMatrix[k][k];
+            }
+        }
+        double[] z = exercise2(LMatrix, independentTerms);
+        return exercise5WithoutPivoteo(UMatrix, z);
     }
 
     /**
