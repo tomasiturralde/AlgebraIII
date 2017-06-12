@@ -1,10 +1,18 @@
 package Tp7;
 
 /**
- * Created by Tomas on 23/5/2017.
+ * Implementations of every exercise in practice number 7.
+ * @author Tomas Iturralde.
+ * @author Lautaro Paskevicius.
  */
 public class Exercises implements TP4 {
 
+    /**
+     * Solves an upper triangular matrix which has 1's in every value of the diagonal.
+     * @param coefficients matrix to be solved.
+     * @param independentTerms the number every equation inside the matrix must reach to.
+     * @return the solution to every equation inside the matrix.
+     */
     @Override
     public double[] exercise1(double[][] coefficients, double[] independentTerms) {
 
@@ -23,6 +31,12 @@ public class Exercises implements TP4 {
         return solution;
     }
 
+    /**
+     * Solves a lower triangular matrix which not necessarily has 1's in every value of the diagonal.
+     * @param coefficients matrix to be solved.
+     * @param independentTerms the number every equation inside the matrix must reach to.
+     * @return the solution to every equation inside the matrix.
+     */
     @Override
     public double[] exercise2(double[][] coefficients, double[] independentTerms) {
         double[] solution = new double[independentTerms.length];
@@ -38,6 +52,12 @@ public class Exercises implements TP4 {
         return solution;
     }
 
+    /**
+     * Solves a matrix by applying the Gauss method to solve it (Without pivoteo).
+     * @param coefficients matrix to be solved.
+     * @param independentTerms the number every equation inside the matrix must reach to.
+     * @return the solution to every equation inside the matrix.
+     */
     @Override
     public double[] exercise5WithoutPivoteo(double[][] coefficients, double[] independentTerms) {
         for (int k = 0; k < coefficients.length; k++) {
@@ -55,6 +75,12 @@ public class Exercises implements TP4 {
         return exercise1(coefficients, independentTerms);
     }
 
+    /**
+     * Solves a matrix by applying the Gauss method to solve it (Using partial pivoteo).
+     * @param coefficients matrix to be solved.
+     * @param independentTerms the number every equation inside the matrix must reach to.
+     * @return the solution to every equation inside the matrix.
+     */
     @Override
     public double[] exercise5PartialPivoteo(double[][] coefficients, double[] independentTerms) {
         for (int k = 0; k < coefficients.length; k++) {
@@ -83,6 +109,13 @@ public class Exercises implements TP4 {
         return exercise1(coefficients, independentTerms);
     }
 
+    /**
+     * Solves a Hessemberg matrix by applying the Gauss method to solve it.
+     * @param coefficients Hessemberg matrix to be solved.
+     * @param independentTerms the number every equation inside the matrix must reach to.
+     * @param calculator used to do mathematical operations while having a counter for each time an operation has been done.
+     * @return the solution to every equation inside the matrix.
+     */
     @Override
     public double[] exercise6(double[][] coefficients, double[] independentTerms, Calculator calculator) {
         for (int k = 0; k < coefficients.length; k++) {
@@ -101,11 +134,23 @@ public class Exercises implements TP4 {
         return exercise1(coefficients, independentTerms);
     }
 
+    /**
+     * Implements the Gauss method to solve a tridiagonal and symmetric matrix.
+     * @param coefficients matrix to be solved.
+     * @param independentTerms the number every equation inside the matrix must reach to.
+     * @param calculator used to do mathematical operations while having a counter for each time an operation has been done.
+     * @return the solution to every equation inside the matrix.
+     */
     @Override
     public double[] exercise7(double[][] coefficients, double[] independentTerms, Calculator calculator) {
         return new double[0];
     }
 
+    /**
+     * Implements the Gauss-Jordan method to find the reverse matrix.
+     * @param coefficients matrix to be reversed.
+     * @return the reversed matrix.
+     */
     @Override
     public double[][] exercise8(double[][] coefficients) {
         double[][] identity = new double[coefficients.length][coefficients.length];
@@ -149,11 +194,21 @@ public class Exercises implements TP4 {
         return result;
     }
 
+    /**
+     * Implements the LU method to solve a matrix.
+     * @param coefficients matrix to be solved.
+     * @param independentTerms the number every equation inside the matrix must reach to.
+     * @return the solution to every equation inside the matrix.
+     */
     @Override
     public double[] exercise9(double[][] coefficients, double[] independentTerms) {
         return new double[0];
     }
 
+    /**
+     * Prints a matrix.
+     * @param mat matrix to be printed.
+     */
     void print(double[][] mat){
         for(int i=0; i < mat.length; i++){
             for(int j=0; j < mat[0].length; j++){
@@ -163,6 +218,12 @@ public class Exercises implements TP4 {
         }
     }
 
+    /**
+     * Extends a matrix by adding the independent terms inside it.
+     * @param coefficients matrix which will be extended.
+     * @param independentTerms which will go inside the extended matrix.
+     * @return
+     */
     public double[][] extend(double[][] coefficients, double[] independentTerms){
         double[][] extendedMat = new double[coefficients.length][coefficients[0].length+1];
 

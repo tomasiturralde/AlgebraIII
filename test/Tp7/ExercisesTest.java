@@ -5,8 +5,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by Lautaro Paskevicius (lautaro.paskevicius@ing.austral.edu.ar)
- * on 23/05/2017.
+ * Testers for every exercise in practice number 7.
+ * @author Tomas Iturralde.
+ * @author Lautaro Paskevicius.
  */
 public class ExercisesTest {
 
