@@ -45,9 +45,9 @@ public class Ej2v2 implements Exercise2 {
         if(matrix.length == matrix[0].length) {
             for (int i = 0; i < matrix.length; i++) {
                 double sum = 0;
-                double diagonal = matrix[i][i];
+                double diagonal = Math.abs(matrix[i][i]);
                 for (int j = 0; j < matrix[0].length; j++) {
-                    if (i != j) calculator.sum(sum, Math.abs(matrix[i][j]));
+                    if (i != j) sum = calculator.sum(sum, Math.abs(matrix[i][j]));
                 }
                 if (diagonal < sum) return false;
             }
