@@ -11,6 +11,9 @@ public class Ej3Test {
 
     @Test
     public void exerciseAI() throws Exception {
+
+        System.out.println("\n AI: ");
+
         double[][] matrix2 = {{2,2,2},
                               {0,2,2},
                               {0,0,2}};
@@ -27,6 +30,9 @@ public class Ej3Test {
 
     @Test
     public void exerciseAII() throws Exception {
+
+        System.out.println("\n AII: ");
+
         double[][] matrix2 = {{2,2,2},
                               {0,2,2},
                               {0,0,2}};
@@ -40,6 +46,9 @@ public class Ej3Test {
 
     @Test
     public void exerciseAIII() throws Exception {
+
+        System.out.println("\n AIII: ");
+
         double[][] matrix2 = {{2,2,2},
                               {0,2,2},
                               {0,0,2}};
@@ -53,10 +62,13 @@ public class Ej3Test {
 
     @Test
     public void exerciseBI() throws Exception {
-        double[][] matrix2 = {{2,2,2,2},
-                              {2,2,2,2},
-                              {0,2,2,2},
-                              {0,0,2,2}};
+
+        System.out.println("\n BI: ");
+
+        double[][] matrix2 = {{3,3,3,3},
+                              {3,3,3,3},
+                              {0,3,3,3},
+                              {0,0,3,3}};
 
         double[] vector = {1,1,1,1};
         Ej3 ej3 = new Ej3();
@@ -70,6 +82,9 @@ public class Ej3Test {
 
     @Test
     public void exerciseBII() throws Exception {
+
+        System.out.println("\n BII: ");
+
         double[][] matrix2 = {{2,2,2,2},
                               {2,2,2,2},
                               {0,2,2,2},
@@ -84,6 +99,9 @@ public class Ej3Test {
 
     @Test
     public void exerciseBIII() throws Exception {
+
+        System.out.println("\n BIII: ");
+
         double[][] matrix2 = {{2,2,2,2},
                               {2,2,2,2},
                               {0,2,2,2},
@@ -98,6 +116,9 @@ public class Ej3Test {
 
     @Test
     public void exerciseCI() throws Exception {
+
+        System.out.println("\n CI: ");
+
         double[][] matrix2 = {{2,2,0,0},
                               {2,2,2,0},
                               {0,2,2,2},
@@ -115,6 +136,8 @@ public class Ej3Test {
 
     @Test
     public void exerciseCII() throws Exception {
+        System.out.println("\n CII: ");
+
         double[][] matrix2 = {{2,2,0,0},
                               {2,2,2,0},
                               {0,2,2,2},
@@ -129,6 +152,9 @@ public class Ej3Test {
 
     @Test
     public void exerciseCIII() throws Exception {
+
+        System.out.println("\n CIII: ");
+
         double[][] matrix2 = {{2,2,0,0},
                               {2,2,2,0},
                               {0,2,2,2},
