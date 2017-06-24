@@ -157,7 +157,7 @@ public class Exercises implements TP4 {
         //do extra step w/ independent terms (n)
         double num = calculator.subtraction(independentTerms[coefficients.length-1],calculator.multiplication(independentTerms[coefficients.length-1-1],coefficients[coefficients.length-1][coefficients.length-1-1]));
         double denom = calculator.subtraction(coefficients[coefficients.length-1][coefficients.length-1],calculator.multiplication(coefficients[coefficients.length-1-1][coefficients.length-1],coefficients[coefficients.length-1][coefficients.length-1-1]));
-        double denom1 = coefficients[coefficients.length-1][coefficients.length-1] - coefficients[coefficients.length-1-1][coefficients.length-1] * coefficients[coefficients.length-1][coefficients.length-1-1];
+        independentTerms[coefficients.length-1] = calculator.division(num,denom);
 
         //Now, solve
         //N-term has already been assigned ( Xn = D'n)

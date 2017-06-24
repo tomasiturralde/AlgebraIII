@@ -21,8 +21,7 @@ public class Ej1 implements Exercise1 {
         if (matrix.length == matrix[0].length) {
             double result = 0;
             for (int i = 0; i < matrix.length; i++) {
-                if (matrix[i][i] != 0)
-                    result = calculator.sum(result,matrix[i][i]);
+                result = calculator.sum(result,matrix[i][i]);
             }
             return result;
         }
