@@ -148,7 +148,7 @@ public class Ej3 implements Exercise3{
      */
     @Override
     public double[][] exerciseBIII(double[][] matrixA, double[][] matrixB, Calculator calculator) {
-        /*if(matrixA[0].length == matrixB.length ){
+        if(matrixA[0].length == matrixB.length ){
             double[][] result = new double[matrixA.length][matrixB[0].length];
 
             for(int j = 0; j <= matrixA.length-1; j++){
@@ -163,27 +163,8 @@ public class Ej3 implements Exercise3{
             return result;
         }
 
-        throw new RuntimeException("Matrices dimensions are not correct!");*/
+        throw new RuntimeException("Matrices dimensions are not correct!");
 
-        if (matrixA[0].length != matrixB.length){
-            throw new RuntimeException();
-        }
-        double[][] multiplication = new double[matrixA.length][matrixB[0].length];
-        for (int i=0,l=1; i<multiplication.length; i++){
-            for (int j=0; j<multiplication[i].length; j++){
-                double result = 0;
-                for (int k=l-1; k<=j+1 && k!=matrixB[0].length; k++){
-                    //if (k<0) k=0; //fixes first run
-                    //if (k==matrixB[0].length) k= matrixB[0].length-1;
-                    //result += matrixA[i][k] * matrixB[k][j];
-                    double product = calculator.multiplication(matrixA[i][k], matrixB[k][j]);
-                    result = calculator.sum(result, product);
-                }
-                multiplication[i][j] = result;
-            }
-            l=i+1;
-        }
-        return multiplication;
     }
 
     /**
